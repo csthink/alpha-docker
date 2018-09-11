@@ -1,0 +1,7 @@
+/.idea
+.DS_Store
+
+/logs/mysql/*.log
+/logs/nginx/*.log
+/logs/php-fpm/*.log
+/logs/redis/*.log
