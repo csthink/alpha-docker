@@ -1,8 +1,8 @@
 # alpha-docker 
 
-本项目基于 Docker，Docker 是一个优秀的开源项目，它基于虚拟化技术，可以极大的提高应用的维护效率，降低了云计算应用开发的成本，！使用 Docker，可以让应用的部署、测试和分发都变得前所未有的高效和轻松！，它的官网地址是 https://www.docker.com/ 还没有接触过的小伙伴们抓紧学习上船吧！
-
-使用 Docker,我们可以做很多事情，这个项目就是基于 Docker 的 compose 实现，通过编写 docker-compose.yml 和 Dockerfile ，我们可以一键打包并部署一个完整的 lnmp 项目。
+本项目基于 Docker，Docker 是一个优秀的开源项目，它基于虚拟化技术，可以极大的提高应用的维护效率，降低云计算应用开发的成本,使用 Docker 可以让应用的部署、测试和分发都变得前所未有的高效和轻松！
+这个项目就是基于 Docker 的 compose 实现，通过编写 docker-compose.yml 和 Dockerfile ，我们可以一键打包并部署一个完整的 lnmp 项目。
+Docker 的官网地址是 https://www.docker.com/ 还没有上船小伙伴们抓紧咯！
 
 ## 镜像列表
 
