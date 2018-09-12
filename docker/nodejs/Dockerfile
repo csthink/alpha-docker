@@ -16,7 +16,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends yarn \
     && rm -rf /var/cache/apt/* \
     && rm -rf /var/lib/apt/lists/*
 
-RUN npm config set registry https://registry.npm.taobao.org
+#RUN npm config set registry https://registry.npm.taobao.org
 
 WORKDIR /data/www/
 COPY ./app/alpha/ ./
