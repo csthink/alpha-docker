@@ -1,0 +1,3 @@
+[submodule "app/alpha"]
+	path = app/alpha
+	url = git@github.com:csthink/alpha.git

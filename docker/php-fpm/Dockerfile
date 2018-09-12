@@ -15,7 +15,7 @@ ENV TZ=Asia/Shanghai
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 # 设置 apt 镜像源
-COPY sources.list /etc/apt/sources.list
+COPY ./docker/sources.list /etc/apt/sources.list
 
 # 更新安装依赖包和 PHP 核心扩展
 RUN apt-get update && apt-get install -y --no-install-recommends \
@@ -48,7 +48,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && docker-php-ext-enable imagick redis memcached yaf swoole xdebug \
     # xdebug 配置
     && echo "xdebug.remote_enable=on\n" >> $(php-config --configure-options | grep -o "with-config-file-scan-dir=\([^ ]*\)" | awk -F'=' '{print $2}')/docker-php-ext-xdebug.ini \
-    #  安装第三方扩展 phalcon
+    # 安装第三方扩展 phalcon
     && curl -sSL "https://codeload.github.com/phalcon/cphalcon/tar.gz/v${PHALCON_VERSION}" | tar -xz \
     && cd cphalcon-${PHALCON_VERSION}/build && ./install \
     && cp ../tests/_ci/phalcon.ini $(php-config --configure-options | grep -o "with-config-file-scan-dir=\([^ ]*\)" | awk -F'=' '{print $2}') \
@@ -66,7 +66,12 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && rm -rf /var/cache/apt/* \
     && rm -rf /var/lib/apt/lists/*
 
-WORKDIR /data
+WORKDIR /data/www/
+COPY ./app/alpha/ ./
+
+RUN find storage -type d -exec chmod 777 {} \;
+RUN chmod 777 bootstrap/cache;
+RUN composer install && php artisan key:generate && php artisan migrate:refresh
 
 # Write Permission
 RUN usermod -u 1000 www-data

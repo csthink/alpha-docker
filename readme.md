@@ -24,6 +24,9 @@ redis: 3.2
     ```
     cd ..alpha-docker/docker # 进入 docker-compose.yml 文件的目录
     docker-compose up -d # 构建镜像，启动容器 -d 表示守护模式启动容器
+    
+    
+    
     docker-compose down # 关闭容器
     ```
 3. 浏览器访问
