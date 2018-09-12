@@ -8,9 +8,9 @@ services:
         ports:
             - "3306:3306"
         volumes:
-            - ../data/mysql:/var/lib/mysql:rw
             - ../logs/mysql:/var/lib/mysql-logs:rw
             - ./mysql/conf.d:/etc/mysql/conf.d:ro
+            - ../data/mysql:/var/lib/mysql:rw
         environment:
             MYSQL_ROOT_PASSWORD: 123456
             MYSQL_DATABASE: alpha
@@ -19,7 +19,7 @@ services:
         restart: always
         networks:
             - backend
-        command: ['mysqld', '--character-set-server=utf8']
+        command: "--character-set-server=utf8"
 
     redis:
         image: csthink/webserver-redis:3.2
@@ -50,7 +50,6 @@ services:
         volumes:
             - ../app:/data/www:rw
             - ./php-fpm/php-dev.ini:/usr/local/etc/php/php.ini:ro
-            - ./php-fpm/conf.d:/usr/local/etc/php/conf.d:ro
             - ./php-fpm/php-fpm.conf:/usr/local/etc/php-fpm.conf:ro
             - ./logs/php-fpm:/var/log/php-fpm:rw
         restart: always

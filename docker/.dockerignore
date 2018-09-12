@@ -1,4 +1,6 @@
-/nginx/*
+# comment
+/app/*
+/data/*
 .git
-Readme.md
+readme.md
 .idea/*
