@@ -33,25 +33,34 @@ Docker 的官网地址是 https://www.docker.com/ 还没有上船小伙伴们抓
 2. 启动项目
     第一次会去 Docker Registry 下载镜像，国内的小伙伴记得配置 Docker 的国内镜像源，推荐阿里云，DaoCloud,网易
     
+    docker-compose 构建项目 
+    
     ```
     cd /var/www/alpha-docker/docker # 进入 docker-compose.yml 文件的目录
+    alpha 是一个Laravel 项目，记得创建 .env 文件，具体可以参考 .env.example,上传本地项目到服务器时，记得将 .env 文件准备好上传上去
     docker-compose up -d # 构建镜像，启动容器 -d 表示守护模式启动容器
+    docker-compose down # 关闭容器并删除服务
     ```
+    
+    使用 Composer
+    alpha 项目依赖 Composer 进行构建,我们在创建 php-fpm 容器时就已经将 Composer 安装在容器中
+    使用 composer 有两种方式，
+    方式1：用 docker-compose 操作(推荐)
+    
+    ```
+    docker-compose run --rm -w /data/www/alpha php-fpm composer install
+    # -w /data/www/alpha 是 php-fpm 的工作区域，alpha 项目也是挂载在里面
+    ```
+    
+    方式2：进入宿主机（容器外部）app 目录下用 docker 命令
+    
+    ```
+    cd alpah-docker/app
+    docker run -it --rm -v `pwd`:/data/www/ -w /data/www/alpha docker_php-fpm composer install
+    ```
+     
 3. 浏览器访问
     
     /var/www/docker/nginx/conf.d/alpha.conf 这里可以修改域名，这里选择默认不改
     * 配置好你本地的host 文件，将该域名指向 linux 服务器地址
-    * 浏览器访问: http://www.alpha.com/ 
-   
-4. 关闭容器
-
-    ```
-    docker-compose down # 关闭容器
-    ```
-  
-PS:
-    Docker 容器的使用命令
-    
-    ```
-    
-    ```
+    * 浏览器访问: http://www.alpha.com/  
