@@ -82,20 +82,19 @@ services:
             - frontend
         command: nginx -g 'daemon off;'
 
-    nodejs:
-        image: csthink/webserver-nodejs:8.11.4
-        build:
-            context: ../
-            dockerfile: ./docker/nodejs/Dockerfile
-        ports:
-            - "3000:3000"
-        volumes:
-            - ../app/alpha/:/data/www:rw
-        restart: always
-        networks:
-            - frontend
-            - backend
-        command: npm
+#    nodejs:
+#        image: csthink/webserver-nodejs:8.11.4
+#        build:
+#            context: ../
+#            dockerfile: ./docker/nodejs/Dockerfile
+#        ports:
+#            - "3000:3000"
+#        volumes:
+#            - ../app/:/data/www:rw
+#        networks:
+#            - frontend
+#            - backend
+#        command: npm
 
 networks:
     frontend:

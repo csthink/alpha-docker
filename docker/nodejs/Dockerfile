@@ -18,10 +18,11 @@ RUN apt-get update && apt-get install -y --no-install-recommends yarn \
 
 #RUN npm config set registry https://registry.npm.taobao.org
 
-WORKDIR /data/www/
-COPY ./app/alpha/ ./
+WORKDIR /data
+#COPY ./app/alpha/ ./
 
-RUN yarn config set registry 'https://registry.npm.taobao.org' \
-    && yarn install --no-bin-links \
-    && yarn add cross-env \
-    && npm run watch-poll
+#RUN yarn config set registry 'https://registry.npm.taobao.org' \
+#    && yarn install --no-bin-links \
+#    && yarn add cross-env \
+##    && npm run watch-poll
+#    && npm run dev
