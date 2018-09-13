@@ -43,8 +43,8 @@ Docker 的官网地址是 https://www.docker.com/ 还没有上船小伙伴们抓
     ```
     
     使用 Composer
-    alpha 项目依赖 Composer 进行构建,我们在创建 php-fpm 容器时就已经将 Composer 安装在容器中
-    使用 composer 有两种方式，
+    alpha 项目依赖 Composer 进行构建,我们在创建 php-fpm 容器时就已经将 Composer 安装在容器中,使用 composer 有两种方式
+    
     方式1：用 docker-compose 操作(推荐)
     
     ```
